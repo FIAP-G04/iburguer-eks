@@ -1,9 +1,11 @@
+//aws_eks_cluster.cluster
+/*
 locals {
     kubeconfig = <<KUBECONFIG
 apiVersion: v1
 clusters:
 - cluster:
-    server: ${aws_eks_cluster.cluster.endpoint}
+    server: ${module.ek .endpoint}
     certificate-authority-data: ${aws_eks_cluster.cluster.certificate_authority[0].data}
   name: kubernetes
 contexts:
@@ -30,4 +32,4 @@ KUBECONFIG
 resource "local_file" "kubeconfig" {
     filename = "kubeconfig"
     content = local.kubeconfig
-}
+}*/
