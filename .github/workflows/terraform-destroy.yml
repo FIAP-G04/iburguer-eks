@@ -1,7 +1,6 @@
 name: Terraform Destroy - iBurguer
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 env:
   AWS_EKS_CLUSTER_NAME: iburguer-iburguer-cluster
