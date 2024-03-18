@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: ["main"]
 
-env:
-  AWS_EKS_CLUSTER_NAME: iburguer-iburguer-cluster
-  AWS_REGION: us-east-1
-
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -26,13 +22,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-
-      - name: Create Kubeconfig
-        run: |
-          aws eks update-kubeconfig --name ${{ env.AWS_EKS_CLUSTER_NAME }} --region ${{ env.AWS_REGION }}  --kubeconfig ./kubeconfig
-          echo 'KUBE_CONFIG_DATA<<EOF' >> $GITHUB_ENV
-          echo $(cat ./kubeconfig | base64) >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
