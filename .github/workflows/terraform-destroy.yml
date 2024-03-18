@@ -31,6 +31,10 @@ jobs:
         with:
           terraform_version: 
 
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve
