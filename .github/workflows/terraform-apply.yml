@@ -34,7 +34,11 @@ jobs:
           echo $(cat ./kubeconfig | base64) >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - name: terraform apply
-        uses: dflook/terraform-apply@v1
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
         with:
-          auto_approve: true
+          terraform_version: 
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
