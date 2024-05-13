@@ -49,7 +49,7 @@ resource "aws_security_group" "eks" {
       iburguer = {
         min_size     = 1
         max_size     = 10
-        desired_size = 3
+        desired_size = 5
 
         instance_types = ["t3.micro"]
         capacity_type  = "SPOT"
