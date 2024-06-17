@@ -41,7 +41,7 @@ Para executar este projeto, é necessário possuir o [Terraform](https://www.ter
 
 Para incializar o projeto e instalar as dependências, é necessário executar o comando:
 
-``` terraform ini ``` 
+``` terraform init ``` 
 
 Para visualizar todos os recursos que serão provisionados na AWS, o comendo a seguir pode ser executado:
 
