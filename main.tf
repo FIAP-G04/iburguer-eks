@@ -21,5 +21,17 @@ module "eks" {
 module "sqs-cart-closed" {
   source = "./modules/sqs"
   name = var.prefix
-  queues = [ "CartClosed", "PaymentApproved", "PaymentRefused" ]
+  queue = "CartClosed"
+}
+
+module "sqs-payment-approved" {
+  source = "./modules/sqs"
+  name = var.prefix
+  queue = "PaymentApproved"
+}
+
+module "sqs-payment-refused" {
+  source = "./modules/sqs"
+  name = var.prefix
+  queue = "PaymentRefused"
 }

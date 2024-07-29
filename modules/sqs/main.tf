@@ -1,6 +1,5 @@
-resource "aws_sqs_queue" "sh_queues" {
-  count                      = length(var.queues)
-  name                       = var.queues[count.index]
+resource "aws_sqs_queue" "sh_queue" {
+  name                       = var.queue
   visibility_timeout_seconds = 30
 }
 
@@ -18,9 +17,8 @@ data "aws_iam_policy_document" "sh_sqs_policy" {
       "sqs:SendMessage",
       "sqs:ReceiveMessage"
     ]
-    resources = [
-      aws_sqs_queue.sh_queue.arn
-    ]
+    resources = [aws_sqs_queue.sh_queue.arn]
+    
   }
 }
 
