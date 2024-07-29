@@ -17,3 +17,21 @@ module "eks" {
   subnet_ids = concat(module.vpc.private_subnet_ids, module.vpc.public_subnet_ids)
   cluster_config_path = var.cluster_config_path
 }
+
+module "sqs-cart-closed" {
+  source = "./modules/sqs"
+  name = var.prefix
+  queue = "CartClosed"
+}
+
+module "sqs-payment-approved" {
+  source = "./modules/sqs"
+  name = var.prefix
+  queue = "PaymentApproved"
+}
+
+module "sqs-payment-refused" {
+  source = "./modules/sqs"
+  name = var.prefix
+  queue = "PaymentRefused"
+}
