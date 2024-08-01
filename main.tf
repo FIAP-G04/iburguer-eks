@@ -35,3 +35,9 @@ module "sqs-payment-refused" {
   name = var.prefix
   queue = "PaymentRefused"
 }
+
+module "sqs-order-generated" {
+  source = "./modules/sqs"
+  name = var.prefix
+  queue = "OrderRegistered"
+}
